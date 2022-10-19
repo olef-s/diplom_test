@@ -7,3 +7,4 @@ function SayHello(message){
 
 SayHello('hello from a function');
 SayHello('dette er endnu en test');
+SayHello('så er der endnu en ændring');
