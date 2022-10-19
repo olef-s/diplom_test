@@ -42,7 +42,15 @@ const EventMitter = require('events');//class hence capitale letter
 const emitter = new EventMitter(); //object
 
 //register a listner
-emitter.on('messageLogged',function(){console.log('listner called');})
+//emitter.on('messageLogged',function(){console.log('listner called');})
 
 //raise an event
-emitter.emit('messageLogged');
+//emitter.emit('messageLogged');
+
+//events with arguments
+//register a listner
+emitter.on('messageLogged',(eventArg)=>{console.log('listner called', eventArg);})
+
+//raise an event
+emitter.emit('messageLogged',{id: 1, url: 'http://...'});
+
