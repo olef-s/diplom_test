@@ -39,8 +39,7 @@ var freeMem = os.freemem();
 
 //event module - a signal that something has occured
 const EventMitter = require('events');//class hence capitale letter
-const { fstat } = require('fs');
-const emitter = new EventMitter(); //object
+
 
 //register a listner
 //emitter.on('messageLogged',function(){console.log('listner called');})
@@ -50,15 +49,23 @@ const emitter = new EventMitter(); //object
 
 //events with arguments
 //register a listner
-emitter.on('messageLogged',(eventArg)=>{console.log('listner called', eventArg);})
+const Logger = require('./logger');
+const logger = new Logger();
+logger.on('messageLogged',(eventArg)=>{console.log('listner called', eventArg);})
 
 //raise an event
-emitter.emit('messageLogged',{id: 1, url: 'http://...'});
+//emitter.emit('messageLogged',{id: 1, url: 'http://...'});
 
 //my own event handling
 
-emitter.on('Logging',(eventArg)=>{console.log('will now write this message to the log ',eventArg)});
+
+logger.on('Logging',(eventArg)=>{console.log('will now write this message to the log ',eventArg)});
 
 //rasing the logging event
-emitter.emit('Logging',{message: 'dette skal gemmes i loggen'});
+//emitter.emit('Logging',{message: 'dette skal gemmes i loggen'});
+
+//Extending EventEmitter
+
+logger.log('message');
+
 
