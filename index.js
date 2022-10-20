@@ -7,9 +7,20 @@ res.send(`Hello World you have entered port ${port} it yet still works...`);
 
 })
 app.get('/api/courses',(req, res)=>{
-res.send('Here you have a list of courses');
+    res.send('you get a list of courses');
+    
+    })
+    //api.get with param
+app.get('/api/courses/:id',(req, res)=>{
+res.send(req.params.id);
 
 })
+//multiple parametres
+app.get('/api/posts/:year/:month',(req, res)=>{
+    //res.send(req.params);//note you can only have one res.send
+    res.send(req.query);//reading a "?sortBy=name"
+    
+    })
 
 //enviroment variable
 
